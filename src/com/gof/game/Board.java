@@ -21,7 +21,6 @@ public class Board {
         this.cells = new Cell[rows][columns];
 
         init();
-        initStartingCells(cells);
     }
 
     /**
@@ -107,34 +106,6 @@ public class Board {
                 cells[i][j] = new Cell(false);
             }
         }
-    }
-
-    /**
-     * @param cells Cell[][]
-     */
-    private void initStartingCells(Cell[][] cells) {
-        int offsetX = 22;
-        int offsetY = 12;
-
-        cells[offsetY+1][offsetX+2].setAlive();
-        cells[offsetY+2][offsetX+3].setAlive();
-        cells[offsetY+3][offsetX+1].setAlive();
-        cells[offsetY+3][offsetX+2].setAlive();
-        cells[offsetY+3][offsetX+3].setAlive();
-
-        int offsetXCellsOne = offsetX + 10; int offsetYCellsOne = offsetY + 10;
-        cells[offsetYCellsOne+1][offsetXCellsOne+4].setAlive();
-        cells[offsetYCellsOne+2][offsetXCellsOne+3].setAlive();
-        cells[offsetYCellsOne+2][offsetXCellsOne+1].setAlive();
-        cells[offsetYCellsOne+3][offsetXCellsOne+2].setAlive();
-        cells[offsetYCellsOne+3][offsetXCellsOne+3].setAlive();
-
-        int offsetXCellTwo = offsetX + 20; int offsetYCellsTwo = offsetY + 20;
-        cells[offsetYCellsTwo+1][offsetXCellTwo+3].setAlive();
-        cells[offsetYCellsTwo+2][offsetXCellTwo+3].setAlive();
-        cells[offsetYCellsTwo+2][offsetXCellTwo+1].setAlive();
-        cells[offsetYCellsTwo+2][offsetXCellTwo+2].setAlive();
-        cells[offsetYCellsTwo+3][offsetXCellTwo+3].setAlive();
     }
 
     private void updateCells() {
