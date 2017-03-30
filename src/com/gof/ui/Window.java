@@ -1,6 +1,7 @@
 package com.gof.ui;
 
 import com.gof.game.Board;
+import com.gof.render.BoardRenderer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +24,7 @@ public class Window extends JFrame implements ActionListener {
         ControlPanelActionListener controlPanelActionListener =
                 new ControlPanelActionListener(this, controlPanelMediator, board);
 
-        BoardPanel boardPanel = new BoardPanel(board,boarder, cellSize);
+        BoardPanel boardPanel = new BoardPanel(new BoardRenderer(board),boarder, cellSize);
 
         BoardPanelMouseListener boardPanelActionListener =
                 new BoardPanelMouseListener(controlPanelMediator, boardPanel, board);

@@ -1,6 +1,6 @@
 package com.gof.ui;
 
-import com.gof.game.Board;
+import com.gof.render.BoardRenderer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,13 +9,13 @@ public class BoardPanel extends JPanel {
     private int boarder;
     private int cellSize;
     private int boarderSize;
-    private Board board;
+    private BoardRenderer boardRenderer;
 
     /**
      * Constructor
      */
-    BoardPanel(Board board, int boarder, int cellSize) {
-        this.board = board;
+    BoardPanel(BoardRenderer boardRenderer, int boarder, int cellSize) {
+        this.boardRenderer = boardRenderer;
         this.cellSize = cellSize;
         this.boarder = boarder;
         this.boarderSize = boarder * cellSize;
@@ -30,7 +30,7 @@ public class BoardPanel extends JPanel {
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        board.draw(g, boarderSize, cellSize);
+        boardRenderer.draw(g, boarderSize, cellSize);
     }
 
     /**

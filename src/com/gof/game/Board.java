@@ -1,8 +1,5 @@
 package com.gof.game;
 
-import java.awt.*;
-import java.util.Random;
-
 public class Board {
     private int rows;
     private int columns;
@@ -27,44 +24,32 @@ public class Board {
         initStartingCells(cells);
     }
 
+    /**
+     * @return int
+     */
     public int getIteration() {
         return iteration;
     }
 
+    /**
+     * @return int
+     */
     public int getRows() {
         return rows;
     }
 
+    /**
+     * @return int
+     */
     public int getColumns() {
         return columns;
     }
 
     /**
-     * @param g Graphics
-     * @param cellSize int
+     * @return Cell[][]
      */
-    public void draw(Graphics g, int boarderSize, int cellSize) {
-        int x = boarderSize, y = boarderSize;
-
-        g.setColor(Color.WHITE);
-        g.fillRect(x, y, cellSize * columns, cellSize * rows);
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                g.setColor(Color.BLACK);
-                if (!cells[i][j].isAlive()) {
-                    g.drawRect(x, y, cellSize, cellSize);
-                }
-
-                if (cells[i][j].isAlive()) {
-                    g.fillRect(x, y, cellSize, cellSize);
-                }
-
-                x += cellSize;
-            }
-            x = boarderSize;
-            y += cellSize;
-        }
+    public Cell[][] getCells() {
+        return cells;
     }
 
     /**

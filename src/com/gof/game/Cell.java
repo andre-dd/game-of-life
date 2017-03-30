@@ -1,6 +1,6 @@
 package com.gof.game;
 
-class Cell {
+public class Cell {
     private boolean alive;
     private boolean updateAlive;
 
@@ -19,7 +19,7 @@ class Cell {
     /**
      * @return boolean
      */
-    boolean isAlive() {
+    public boolean isAlive() {
         return alive;
     }
 
