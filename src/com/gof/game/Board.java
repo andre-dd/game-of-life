@@ -97,6 +97,7 @@ public class Board {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 cells[i][j].setDead();
+                cells[i][j].setUpdateDead();
             }
         }
     }
@@ -119,10 +120,12 @@ public class Board {
             for (int j = 0; j < columns; j++) {
                 if (initialCells[i][j].isAlive()) {
                     cells[i][j].setAlive();
+                    cells[i][j].setUpdateAlive();
                     continue;
                 }
 
                 cells[i][j].setDead();
+                cells[i][j].setUpdateDead();
             }
         }
     }
