@@ -24,7 +24,8 @@ public class BoardTest extends TestCase {
     }
 
     public void testGliderIteration() {
-        board.reset();
+        board.resetIteration();
+        board.resetCells();
 
         boolean[][] initBoard = {
                 { false, false, false, false, false, false },
@@ -54,19 +55,15 @@ public class BoardTest extends TestCase {
         assertEquals(1, board.getIteration());
     }
 
-    public void testReset() {
-        board.reset();
+    public void testResetIteration() {
+        board.iterate();
 
-        boolean[][] expectedBoard = {
-                { false, false, false, false, false, false },
-                { false, false, false, false, false, false },
-                { false, false, false, false, false, false },
-                { false, false, false, false, false, false },
-                { false, false, false, false, false, false },
-                { false, false, false, false, false, false },
-        };
+        assertEquals(1, board.getIteration());
 
-        assertExpectedBoard(expectedBoard);
+        board.resetIteration();
+
+        assertEquals(0, board.getIteration());
+
     }
 
     public void testSetCellAlive() {
@@ -93,6 +90,23 @@ public class BoardTest extends TestCase {
                 { false, false, false, false, false, false },
                 { false, false, false, false, false, false },
                 { false, false, true,  false, false, false },
+                { false, false, false, false, false, false },
+                { false, false, false, false, false, false },
+                { false, false, false, false, false, false },
+        };
+
+        assertExpectedBoard(expectedBoard);
+    }
+
+    public void testSaveAndLoadInitialCells() {
+        board.saveInitialCells();
+        board.iterate();
+        board.loadInitialCells();
+
+        boolean[][] expectedBoard = {
+                { false, false, false, false, false, false },
+                { false, false, false, false, false, false },
+                { false, true,  true,  true,  false, false },
                 { false, false, false, false, false, false },
                 { false, false, false, false, false, false },
                 { false, false, false, false, false, false },

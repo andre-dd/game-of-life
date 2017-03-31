@@ -30,6 +30,8 @@ public class ControlPanelActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getActionCommand().equals(Actions.START.name())) {
+            board.saveInitialCells();
+
             timer = new Timer(controlPanelMediator.getSpeed(), window);
             timer.start();
 
@@ -57,7 +59,8 @@ public class ControlPanelActionListener implements ActionListener {
             controlPanelMediator.disablePause();
             controlPanelMediator.disableReset();
 
-            board.reset();
+            board.resetIteration();
+            board.loadInitialCells();
 
             controlPanelMediator.updateIteration(board.getIteration());
             window.repaint();

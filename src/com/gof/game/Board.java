@@ -5,6 +5,7 @@ public class Board {
     private int columns;
     private int iteration = 0;
     private Cell[][] cells;
+    private Cell[][] initialCells;
     private int[][] neighborCells = {
         {-1, -1}, {0, -1}, {1, -1},
         {-1,  0},          {1,  0},
@@ -19,6 +20,7 @@ public class Board {
         this.rows = rows;
         this.columns = columns;
         this.cells = new Cell[rows][columns];
+        this.initialCells = new Cell[rows][columns];
 
         init();
     }
@@ -87,9 +89,42 @@ public class Board {
         updateCells();
     }
 
-    public void reset() {
-        init();
+    public void resetIteration() {
         iteration = 0;
+    }
+
+    public void resetCells() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                cells[i][j].setDead();
+            }
+        }
+    }
+
+    public void saveInitialCells() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (cells[i][j].isAlive()) {
+                    initialCells[i][j].setAlive();
+                    continue;
+                }
+
+                initialCells[i][j].setDead();
+            }
+        }
+    }
+
+    public void loadInitialCells() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (initialCells[i][j].isAlive()) {
+                    cells[i][j].setAlive();
+                    continue;
+                }
+
+                cells[i][j].setDead();
+            }
+        }
     }
 
     /**
@@ -112,6 +147,7 @@ public class Board {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 cells[i][j] = new Cell(false);
+                initialCells[i][j] = new Cell(false);
             }
         }
     }
