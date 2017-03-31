@@ -18,7 +18,7 @@ public class BoardPanelMouseListener implements MouseMotionListener, MouseListen
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if (controlPanelMediator.isEdit()) {
+        if (controlPanelMediator.isDrawAliveCell()) {
             drawAliveCell(e.getPoint());
         }
     }
@@ -28,7 +28,7 @@ public class BoardPanelMouseListener implements MouseMotionListener, MouseListen
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (controlPanelMediator.isEdit()) {
+        if (controlPanelMediator.isDrawAliveCell()) {
             drawAliveCell(e.getPoint());
         }
     }

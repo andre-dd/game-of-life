@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 public class ControlPanelActionListener implements ActionListener {
     enum Actions {
-        START, PAUSE, RESET, EDIT
+        START, PAUSE, RESET, DRAW_ALIVE_CELL
     }
 
     private Timer timer;

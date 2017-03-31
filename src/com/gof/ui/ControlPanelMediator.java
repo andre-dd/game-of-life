@@ -7,7 +7,7 @@ class ControlPanelMediator {
     private JButton startButton;
     private JButton resetButton;
     private JToggleButton pauseButton;
-    private JToggleButton editButton;
+    private JToggleButton drawAliveCellButton;
     private JComboBox speedComboBox;
     private JLabel iterationLabel;
 
@@ -33,10 +33,10 @@ class ControlPanelMediator {
     }
 
     /**
-     * @param editButton JToggleButton
+     * @param drawAliveCellButton JToggleButton
      */
-    void registerEditButton(JToggleButton editButton) {
-        this.editButton = editButton;
+    void registerDrawAliveCellButton(JToggleButton drawAliveCellButton) {
+        this.drawAliveCellButton = drawAliveCellButton;
     }
 
     /**
@@ -77,8 +77,8 @@ class ControlPanelMediator {
         pauseButton.setEnabled(false);
     }
 
-    boolean isEdit() {
-        return editButton.getModel().isSelected();
+    boolean isDrawAliveCell() {
+        return drawAliveCellButton.getModel().isSelected();
     }
 
     /**
