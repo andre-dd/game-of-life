@@ -25,10 +25,12 @@ public class Cell {
 
     void setAlive() {
         this.alive = true;
+        this.updateAlive = true;
     }
 
     void setDead() {
         this.alive = false;
+        this.updateAlive = false;
     }
 
     void setUpdateAlive() {
