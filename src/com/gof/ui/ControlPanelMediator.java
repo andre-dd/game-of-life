@@ -9,6 +9,7 @@ class ControlPanelMediator {
     private JToggleButton pauseButton;
     private JToggleButton drawAliveCellButton;
     private JToggleButton drawDeadCellButton;
+    private JButton clearBoardButton;
     private JComboBox speedComboBox;
     private JLabel iterationLabel;
 
@@ -45,6 +46,13 @@ class ControlPanelMediator {
      */
     void registerDrawDeadCellButton(JToggleButton drawDeadCellButton) {
         this.drawDeadCellButton = drawDeadCellButton;
+    }
+
+    /**
+     * @param clearBoardButton JButton
+     */
+    void registerClearBoardButton(JButton clearBoardButton) {
+        this.clearBoardButton = clearBoardButton;
     }
 
     /**
@@ -93,6 +101,14 @@ class ControlPanelMediator {
         speedComboBox.setEnabled(false);
     }
 
+    void enableCleaBoard() {
+        clearBoardButton.setEnabled(true);
+    }
+
+    void disableClearBoard() {
+        clearBoardButton.setEnabled(false);
+    }
+
     void unsetPause() {
         pauseButton.getModel().setSelected(false);
     }
@@ -131,3 +147,4 @@ class ControlPanelMediator {
         return entry.getValue();
     }
 }
+

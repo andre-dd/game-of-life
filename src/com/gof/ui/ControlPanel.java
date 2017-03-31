@@ -38,6 +38,11 @@ class ControlPanel extends JPanel {
         resetButton.setEnabled(false);
         controlPanelMediator.registerResetButton(resetButton    );
 
+        JButton clearBoardButton = new JButton("Clear");
+        clearBoardButton.addActionListener(controlPanelActionListener);
+        clearBoardButton.setActionCommand(ControlPanelActionListener.Actions.CLEAR_BOARD.name());
+        controlPanelMediator.registerClearBoardButton(clearBoardButton);
+
         JComboBox speedComboBox = createSpeedCheckBox();
         controlPanelMediator.registerSpeedComboBox(speedComboBox);
 
@@ -46,6 +51,7 @@ class ControlPanel extends JPanel {
         add(resetButton);
         add(drawAliveCellButton);
         add(drawDeadCellButton);
+        add(clearBoardButton);
         add(new JLabel("Speed:"));
         add(speedComboBox);
         add(iterationLabel);
