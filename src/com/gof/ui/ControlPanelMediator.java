@@ -8,6 +8,7 @@ class ControlPanelMediator {
     private JButton resetButton;
     private JToggleButton pauseButton;
     private JToggleButton drawAliveCellButton;
+    private JToggleButton drawDeadCellButton;
     private JComboBox speedComboBox;
     private JLabel iterationLabel;
 
@@ -40,6 +41,13 @@ class ControlPanelMediator {
     }
 
     /**
+     * @param drawDeadCellButton JToggleButton
+     */
+    void registerDrawDeadCellButton(JToggleButton drawDeadCellButton) {
+        this.drawDeadCellButton = drawDeadCellButton;
+    }
+
+    /**
      * @param speedComboBox JComboBox
      */
     void registerSpeedComboBox(JComboBox speedComboBox) {
@@ -61,31 +69,12 @@ class ControlPanelMediator {
         startButton.setEnabled(true);
     }
 
-    boolean isPaused() {
-        return pauseButton.getModel().isSelected();
-    }
-
-    void unsetPause() {
-        pauseButton.getModel().setSelected(false);
-    }
-
     void enablePause() {
         pauseButton.setEnabled(true);
     }
 
     void disablePause() {
         pauseButton.setEnabled(false);
-    }
-
-    boolean isDrawAliveCell() {
-        return drawAliveCellButton.getModel().isSelected();
-    }
-
-    /**
-     * @param iteration Iteration
-     */
-    void updateIteration(int iteration) {
-        this.iterationLabel.setText("Iteration: " + iteration);
     }
 
     void enableReset() {
@@ -96,17 +85,49 @@ class ControlPanelMediator {
         resetButton.setEnabled(false);
     }
 
-    int getSpeed() {
-        Map.Entry<String, Integer> entry = (Map.Entry<String, Integer>) speedComboBox.getModel().getSelectedItem();
-
-        return entry.getValue();
-    }
-
     void enableSpeed() {
         speedComboBox.setEnabled(true);
     }
 
     void disableSpeed() {
         speedComboBox.setEnabled(false);
+    }
+
+    void unsetPause() {
+        pauseButton.getModel().setSelected(false);
+    }
+
+    void unsetDrawAliveCell() {
+        drawAliveCellButton.getModel().setSelected(false);
+    }
+
+    void unsetDrawDeadCell() {
+        drawDeadCellButton.getModel().setSelected(false);
+    }
+
+    /**
+     * @return boolean
+     */
+    boolean isPaused() {
+        return pauseButton.getModel().isSelected();
+    }
+
+    boolean isDrawAliveCell() {
+        return drawAliveCellButton.getModel().isSelected();
+    }
+
+    boolean isDrawDeadCell() { return drawDeadCellButton.getModel().isSelected(); }
+
+    /**
+     * @param iteration Iteration
+     */
+    void updateIteration(int iteration) {
+        this.iterationLabel.setText("Iteration: " + iteration);
+    }
+
+    int getSpeed() {
+        Map.Entry<String, Integer> entry = (Map.Entry<String, Integer>) speedComboBox.getModel().getSelectedItem();
+
+        return entry.getValue();
     }
 }

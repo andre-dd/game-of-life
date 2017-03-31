@@ -100,6 +100,14 @@ public class Board {
         cells[row][column].setAlive();
     }
 
+    /**
+     * @param row int
+     * @param column int
+     */
+    public void setCellDead(int row, int column) {
+        cells[row][column].setDead();
+    }
+
     private void init() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {

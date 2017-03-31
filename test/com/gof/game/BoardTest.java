@@ -85,6 +85,22 @@ public class BoardTest extends TestCase {
         assertExpectedBoard(expectedBoard);
     }
 
+    public void testSetCellDead() {
+        board.setCellDead(2,1);
+        board.setCellDead(2,3);
+
+        boolean[][] expectedBoard = {
+                { false, false, false, false, false, false },
+                { false, false, false, false, false, false },
+                { false, false, true,  false, false, false },
+                { false, false, false, false, false, false },
+                { false, false, false, false, false, false },
+                { false, false, false, false, false, false },
+        };
+
+        assertExpectedBoard(expectedBoard);
+    }
+
     protected void setUp() {
         board = new Board(6, 6);
 

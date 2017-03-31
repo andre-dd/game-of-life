@@ -18,9 +18,7 @@ public class BoardPanelMouseListener implements MouseMotionListener, MouseListen
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if (controlPanelMediator.isDrawAliveCell()) {
-            drawAliveCell(e.getPoint());
-        }
+        doDrawOperations(e.getPoint());
     }
 
     @Override
@@ -28,9 +26,7 @@ public class BoardPanelMouseListener implements MouseMotionListener, MouseListen
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (controlPanelMediator.isDrawAliveCell()) {
-            drawAliveCell(e.getPoint());
-        }
+        doDrawOperations(e.getPoint());
     }
 
     @Override
@@ -48,7 +44,20 @@ public class BoardPanelMouseListener implements MouseMotionListener, MouseListen
     /**
      * @param point Point
      */
-    private void drawAliveCell(Point point) {
+    private void doDrawOperations(Point point) {
+        if (controlPanelMediator.isDrawAliveCell()) {
+            drawCell(point, true);
+        }
+
+        if (controlPanelMediator.isDrawDeadCell()) {
+            drawCell(point, false);
+        }
+    }
+
+    /**
+     * @param point Point
+     */
+    private void drawCell(Point point, boolean alive) {
         int column = this.transformRow((int)point.getX());
         int row = this.transformColumn((int)point.getY());
 
@@ -56,7 +65,12 @@ public class BoardPanelMouseListener implements MouseMotionListener, MouseListen
             return;
         }
 
-        board.setCellAlive(row, column);
+        if (alive) {
+            board.setCellAlive(row, column);
+        } else {
+            board.setCellDead(row, column);
+        }
+
         boardPanel.repaint();
     }
 

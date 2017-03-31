@@ -22,10 +22,15 @@ class ControlPanel extends JPanel {
         pauseButton.setEnabled(false);
         controlPanelMediator.registerPauseButton(pauseButton);
 
-        JToggleButton drawAliveCellButton = new JToggleButton("Draw alive cell");
+        JToggleButton drawAliveCellButton = new JToggleButton("Draw alive");
         drawAliveCellButton.addActionListener(controlPanelActionListener);
         drawAliveCellButton.setActionCommand(ControlPanelActionListener.Actions.DRAW_ALIVE_CELL.name());
         controlPanelMediator.registerDrawAliveCellButton(drawAliveCellButton);
+
+        JToggleButton drawDeadCellButton = new JToggleButton("Draw dead");
+        drawDeadCellButton.addActionListener(controlPanelActionListener);
+        drawDeadCellButton.setActionCommand(ControlPanelActionListener.Actions.DRAW_DEAD_CELL.name());
+        controlPanelMediator.registerDrawDeadCellButton(drawDeadCellButton);
 
         JButton resetButton = new JButton("Reset");
         resetButton.addActionListener(controlPanelActionListener);
@@ -40,6 +45,7 @@ class ControlPanel extends JPanel {
         add(pauseButton);
         add(resetButton);
         add(drawAliveCellButton);
+        add(drawDeadCellButton);
         add(new JLabel("Speed:"));
         add(speedComboBox);
         add(iterationLabel);
