@@ -10,6 +10,7 @@ public class BoardPanel extends JPanel {
     private int cellSize;
     private int boarderSize;
     private BoardRenderer boardRenderer;
+    private Point mousePosition;
 
     /**
      * Constructor
@@ -19,6 +20,7 @@ public class BoardPanel extends JPanel {
         this.cellSize = cellSize;
         this.boarder = boarder;
         this.boarderSize = boarder * cellSize;
+        this.mousePosition = new Point();
     }
 
     /**
@@ -31,6 +33,16 @@ public class BoardPanel extends JPanel {
         g.fillRect(0, 0, getWidth(), getHeight());
 
         boardRenderer.draw(g, boarderSize, cellSize);
+
+        g.setColor(Color.RED);
+        g.fillRect(mousePosition.x * cellSize + boarderSize, mousePosition.y * cellSize + boarderSize, cellSize, cellSize);
+    }
+
+    /**
+     * @param mousePosition Point
+     */
+    void setMousePosition(Point mousePosition) {
+        this.mousePosition = mousePosition;
     }
 
     /**

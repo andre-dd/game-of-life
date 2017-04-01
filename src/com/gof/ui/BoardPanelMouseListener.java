@@ -18,11 +18,15 @@ public class BoardPanelMouseListener implements MouseMotionListener, MouseListen
 
     @Override
     public void mouseDragged(MouseEvent e) {
+        boardPanel.setMousePosition(new Point(transformColumn(e.getX()), transformColumn(e.getY())));
         doDrawOperations(e.getPoint());
     }
 
     @Override
-    public void mouseMoved(MouseEvent e) {}
+    public void mouseMoved(MouseEvent e) {
+        boardPanel.setMousePosition(new Point(transformColumn(e.getX()), transformColumn(e.getY())));
+        boardPanel.repaint();
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
