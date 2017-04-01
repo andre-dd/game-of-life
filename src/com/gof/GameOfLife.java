@@ -9,11 +9,11 @@ public class GameOfLife {
      */
     public static void main(String[] args)  {
         int cellSize = 10;
-        int width = 800;
-        int height = 600;
+        int width = 1020;
+        int height = 720;
         int boarder = 0;
-        int rows = 54;
-        int columns = 80;
+        int rows = 66;
+        int columns = 102;
 
         new Window(new Board(rows, columns), width, height, boarder, cellSize);
     }
