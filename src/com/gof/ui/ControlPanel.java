@@ -22,6 +22,10 @@ class ControlPanel extends JPanel {
         pauseButton.setEnabled(false);
         controlPanelMediator.registerPauseButton(pauseButton);
 
+        JButton iterateButton = new JButton("Iterate");
+        iterateButton.addActionListener(controlPanelActionListener);
+        iterateButton.setActionCommand(ControlPanelActionListener.Actions.ITERATE.name());
+
         JToggleButton drawAliveCellButton = new JToggleButton("Draw alive");
         drawAliveCellButton.addActionListener(controlPanelActionListener);
         drawAliveCellButton.setActionCommand(ControlPanelActionListener.Actions.DRAW_ALIVE_CELL.name());
@@ -35,7 +39,6 @@ class ControlPanel extends JPanel {
         JButton resetButton = new JButton("Reset");
         resetButton.addActionListener(controlPanelActionListener);
         resetButton.setActionCommand(ControlPanelActionListener.Actions.RESET.name());
-        resetButton.setEnabled(false);
         controlPanelMediator.registerResetButton(resetButton    );
 
         JButton clearBoardButton = new JButton("Clear");
@@ -48,6 +51,7 @@ class ControlPanel extends JPanel {
 
         add(startButton);
         add(pauseButton);
+        add(iterateButton);
         add(resetButton);
         add(drawAliveCellButton);
         add(drawDeadCellButton);

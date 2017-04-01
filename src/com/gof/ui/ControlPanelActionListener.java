@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 public class ControlPanelActionListener implements ActionListener {
     enum Actions {
-        START, PAUSE, RESET, DRAW_ALIVE_CELL, DRAW_DEAD_CELL, CLEAR_BOARD
+        START, PAUSE, RESET, DRAW_ALIVE_CELL, DRAW_DEAD_CELL, CLEAR_BOARD, ITERATE
     }
 
     private Timer timer;
@@ -39,7 +39,6 @@ public class ControlPanelActionListener implements ActionListener {
             controlPanelMediator.disableSpeed();
             controlPanelMediator.disableClearBoard();
             controlPanelMediator.enablePause();
-            controlPanelMediator.enableReset();
         }
 
         if (event.getActionCommand().equals(Actions.PAUSE.name())) {
@@ -51,6 +50,13 @@ public class ControlPanelActionListener implements ActionListener {
             timer.start();
         }
 
+        if (event.getActionCommand().equals(Actions.ITERATE.name())) {
+            board.iterate();
+
+            controlPanelMediator.updateIteration(board.getIteration());
+            window.repaint();
+        }
+
         if (event.getActionCommand().equals(Actions.RESET.name())) {
             timer.stop();
 
@@ -59,7 +65,6 @@ public class ControlPanelActionListener implements ActionListener {
             controlPanelMediator.enableCleaBoard();
             controlPanelMediator.unsetPause();
             controlPanelMediator.disablePause();
-            controlPanelMediator.disableReset();
 
             board.resetIteration();
             board.loadInitialCells();
