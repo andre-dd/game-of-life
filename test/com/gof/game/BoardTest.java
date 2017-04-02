@@ -55,6 +55,40 @@ public class BoardTest extends TestCase {
         assertEquals(1, board.getIteration());
     }
 
+    public void testGliederIterationOverBorder() {
+        board.resetIteration();
+        board.resetCells();
+
+        boolean[][] initBoard = {
+                { false, false, false, false, false, false },
+                { false, false, false, false, false, false },
+                { false, false, false, false, false, false },
+                { false, true, false, false, false, false },
+                { false, false, true, false, false, false },
+                { true, true, true, false, false, false },
+        };
+
+        initBoard(board, initBoard);
+
+        assertEquals(0, board.getIteration());
+
+        for (int i = 0; i < 12; i++) {
+            board.iterate();
+        }
+
+        boolean[][] expectedBoard = {
+                { false, false, false, false, true, false },
+                { false, false, false, false, false, true },
+                { false, false, false, true, true, true },
+                { false, false, false, false, false, false },
+                { false, false, false, false, false, false },
+                { false, false, false, false, false, false },
+        };
+
+        assertExpectedBoard(expectedBoard);
+        assertEquals(12, board.getIteration());
+    }
+
     public void testResetIteration() {
         board.iterate();
 

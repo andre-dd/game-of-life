@@ -173,8 +173,16 @@ public class Board {
             int x = i + neighborCell[0];
             int y = j + neighborCell[1];
 
-            if (!(x > 0 && x < rows && y > 0 && y < columns)) {
-                continue;
+            if (x < 0) {
+                x = rows - 1;
+            } else if (x >= rows) {
+                x = 0;
+            }
+
+            if (y < 0) {
+                y = columns - 1;
+            } else if (y >= columns) {
+                y = 0;
             }
 
             if (cells[x][y].isAlive()) {
