@@ -26,18 +26,20 @@ public class Window extends JFrame implements ActionListener {
 
         BoardPanel boardPanel = new BoardPanel(new BoardRenderer(board),boarder, cellSize);
 
+        boardPanel.setPreferredSize(
+                new Dimension(board.getColumns() * cellSize, board.getRows() * cellSize)
+        );
         BoardPanelMouseListener boardPanelActionListener =
                 new BoardPanelMouseListener(controlPanelMediator, boardPanel, board);
         boardPanel.addMouseListener(boardPanelActionListener);
         boardPanel.addMouseMotionListener(boardPanelActionListener);
 
-        add(BorderLayout.CENTER, boardPanel);
+        add(BorderLayout.CENTER, new JScrollPane(boardPanel));
         add(BorderLayout.SOUTH, new ControlPanel(controlPanelMediator, controlPanelActionListener));
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(width, height);
         setLocationByPlatform(true);
-        setResizable(false);
         setVisible(true);
     }
 
