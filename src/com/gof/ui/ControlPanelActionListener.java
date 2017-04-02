@@ -58,7 +58,9 @@ public class ControlPanelActionListener implements ActionListener {
         }
 
         if (event.getActionCommand().equals(Actions.RESET.name())) {
-            timer.stop();
+            if (null != timer) {
+                timer.stop();
+            }
 
             controlPanelMediator.enableStart();
             controlPanelMediator.enableSpeed();
