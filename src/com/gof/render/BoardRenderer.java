@@ -33,6 +33,8 @@ public class BoardRenderer {
                 g.setColor(Color.RED);
                 if (cells[i][j].isAlive()) {
                     g.fillRect(x, y, cellSize, cellSize);
+                    g.setColor(Color.DARK_GRAY);
+                    g.drawRect(x, y, cellSize, cellSize);
                 }
 
                 x += cellSize;
