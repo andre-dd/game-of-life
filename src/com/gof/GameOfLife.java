@@ -9,7 +9,7 @@ public class GameOfLife {
      */
     public static void main(String[] args)  {
         int cellSize = 10;
-        int width = 800;
+        int width = 840;
         int height = 600;
         int boarder = 0;
         int rows = 200;

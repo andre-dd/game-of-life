@@ -26,20 +26,13 @@ class ControlPanel extends JPanel {
         iterateButton.addActionListener(controlPanelActionListener);
         iterateButton.setActionCommand(ControlPanelActionListener.Actions.ITERATE.name());
 
-        JToggleButton drawAliveCellButton = new JToggleButton("Draw alive");
-        drawAliveCellButton.addActionListener(controlPanelActionListener);
-        drawAliveCellButton.setActionCommand(ControlPanelActionListener.Actions.DRAW_ALIVE_CELL.name());
-        controlPanelMediator.registerDrawAliveCellButton(drawAliveCellButton);
-
-        JToggleButton drawDeadCellButton = new JToggleButton("Draw dead");
-        drawDeadCellButton.addActionListener(controlPanelActionListener);
-        drawDeadCellButton.setActionCommand(ControlPanelActionListener.Actions.DRAW_DEAD_CELL.name());
-        controlPanelMediator.registerDrawDeadCellButton(drawDeadCellButton);
+        JToggleButton drawButton = new JToggleButton("Draw");
+        drawButton.addActionListener(controlPanelActionListener);
+        controlPanelMediator.registerCellButton(drawButton);
 
         JButton resetButton = new JButton("Reset");
         resetButton.addActionListener(controlPanelActionListener);
         resetButton.setActionCommand(ControlPanelActionListener.Actions.RESET.name());
-        controlPanelMediator.registerResetButton(resetButton    );
 
         JButton clearBoardButton = new JButton("Clear");
         clearBoardButton.addActionListener(controlPanelActionListener);
@@ -53,8 +46,7 @@ class ControlPanel extends JPanel {
         add(pauseButton);
         add(iterateButton);
         add(resetButton);
-        add(drawAliveCellButton);
-        add(drawDeadCellButton);
+        add(drawButton);
         add(clearBoardButton);
         add(new JLabel("Speed:"));
         add(speedComboBox);

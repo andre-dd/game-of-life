@@ -138,6 +138,16 @@ public class Board {
     /**
      * @param row int
      * @param column int
+     *
+     * @return boolean
+     */
+    public boolean isCellAlive(int row, int column) {
+        return cells[row][column].isAlive();
+    }
+
+    /**
+     * @param row int
+     * @param column int
      */
     public void setCellDead(int row, int column) {
         cells[row][column].setDead();

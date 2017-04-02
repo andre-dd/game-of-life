@@ -24,7 +24,7 @@ public class Window extends JFrame implements ActionListener {
         ControlPanelActionListener controlPanelActionListener =
                 new ControlPanelActionListener(this, controlPanelMediator, board);
 
-        BoardPanel boardPanel = new BoardPanel(new BoardRenderer(board),boarder, cellSize);
+        BoardPanel boardPanel = new BoardPanel(new BoardRenderer(board), controlPanelMediator, boarder, cellSize);
 
         boardPanel.setPreferredSize(
                 new Dimension(board.getColumns() * cellSize, board.getRows() * cellSize)

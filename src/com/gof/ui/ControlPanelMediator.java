@@ -5,10 +5,8 @@ import java.util.Map;
 
 class ControlPanelMediator {
     private JButton startButton;
-    private JButton resetButton;
     private JToggleButton pauseButton;
-    private JToggleButton drawAliveCellButton;
-    private JToggleButton drawDeadCellButton;
+    private JToggleButton drawButton;
     private JButton clearBoardButton;
     private JComboBox speedComboBox;
     private JLabel iterationLabel;
@@ -28,24 +26,10 @@ class ControlPanelMediator {
     }
 
     /**
-     * @param resetButton JButton
+     * @param drawButton JToggleButton
      */
-    void registerResetButton(JButton resetButton) {
-        this.resetButton = resetButton;
-    }
-
-    /**
-     * @param drawAliveCellButton JToggleButton
-     */
-    void registerDrawAliveCellButton(JToggleButton drawAliveCellButton) {
-        this.drawAliveCellButton = drawAliveCellButton;
-    }
-
-    /**
-     * @param drawDeadCellButton JToggleButton
-     */
-    void registerDrawDeadCellButton(JToggleButton drawDeadCellButton) {
-        this.drawDeadCellButton = drawDeadCellButton;
+    void registerCellButton(JToggleButton drawButton) {
+        this.drawButton = drawButton;
     }
 
     /**
@@ -85,14 +69,6 @@ class ControlPanelMediator {
         pauseButton.setEnabled(false);
     }
 
-    void enableReset() {
-        resetButton.setEnabled(true);
-    }
-
-    void disableReset() {
-        resetButton.setEnabled(false);
-    }
-
     void enableSpeed() {
         speedComboBox.setEnabled(true);
     }
@@ -113,14 +89,6 @@ class ControlPanelMediator {
         pauseButton.getModel().setSelected(false);
     }
 
-    void unsetDrawAliveCell() {
-        drawAliveCellButton.getModel().setSelected(false);
-    }
-
-    void unsetDrawDeadCell() {
-        drawDeadCellButton.getModel().setSelected(false);
-    }
-
     /**
      * @return boolean
      */
@@ -128,11 +96,9 @@ class ControlPanelMediator {
         return pauseButton.getModel().isSelected();
     }
 
-    boolean isDrawAliveCell() {
-        return drawAliveCellButton.getModel().isSelected();
+    boolean isDraw() {
+        return drawButton.getModel().isSelected();
     }
-
-    boolean isDrawDeadCell() { return drawDeadCellButton.getModel().isSelected(); }
 
     /**
      * @param iteration Iteration
