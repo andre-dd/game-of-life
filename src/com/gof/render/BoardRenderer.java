@@ -20,17 +20,17 @@ public class BoardRenderer {
         Cell[][] cells = board.getCells();
 
         int x = boarderSize, y = boarderSize;
-        g.setColor(Color.WHITE);
+        g.setColor(new Color(48, 48, 48));
         g.fillRect(x, y, cellSize * board.getColumns(), cellSize * board.getRows());
 
         for (int i = 0; i < board.getRows(); i++) {
             for (int j = 0; j < board.getColumns(); j++) {
-                g.setColor(Color.GRAY);
+                g.setColor(Color.DARK_GRAY);
                 if (!cells[i][j].isAlive()) {
                     g.drawRect(x, y, cellSize, cellSize);
                 }
 
-                g.setColor(Color.BLACK);
+                g.setColor(Color.RED);
                 if (cells[i][j].isAlive()) {
                     g.fillRect(x, y, cellSize, cellSize);
                 }
