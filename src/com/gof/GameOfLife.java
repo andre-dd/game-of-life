@@ -12,8 +12,8 @@ public class GameOfLife {
         int width = 800;
         int height = 600;
         int boarder = 0;
-        int rows = 60;
-        int columns = 100;
+        int rows = 200;
+        int columns = 200;
 
         new Window(new Board(rows, columns), width, height, boarder, cellSize);
     }
