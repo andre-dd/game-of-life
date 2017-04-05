@@ -65,7 +65,7 @@ class ControlPanel extends JPanel {
         speed.put("Very Fast", 50);
 
         JComboBox speedComboBox = new JComboBox<>(speed.entrySet().toArray());
-        speedComboBox.setSelectedIndex(2);
+        speedComboBox.setSelectedIndex(3);
 
         return speedComboBox;
     }
