@@ -15,7 +15,7 @@ public class Window extends JFrame implements ActionListener {
     /**
      * @param board Board
      */
-    public Window(Board board, int width, int height, int boarder, int cellSize) {
+    public Window(Board board, int width, int height, int border, int cellSize) {
         super("Conway's Game of Life");
 
         this.board = board;
@@ -24,7 +24,7 @@ public class Window extends JFrame implements ActionListener {
         ControlPanelActionListener controlPanelActionListener =
                 new ControlPanelActionListener(this, controlPanelMediator, board);
 
-        BoardPanel boardPanel = new BoardPanel(new BoardRenderer(board), controlPanelMediator, boarder, cellSize);
+        BoardPanel boardPanel = new BoardPanel(new BoardRenderer(board), controlPanelMediator, border, cellSize);
 
         boardPanel.setPreferredSize(
                 new Dimension(board.getColumns() * cellSize, board.getRows() * cellSize)

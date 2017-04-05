@@ -11,10 +11,10 @@ public class GameOfLife {
         int cellSize = 10;
         int width = 840;
         int height = 600;
-        int boarder = 0;
+        int border = 0;
         int rows = 200;
         int columns = 200;
 
-        new Window(new Board(rows, columns), width, height, boarder, cellSize);
+        new Window(new Board(rows, columns), width, height, border, cellSize);
     }
 }

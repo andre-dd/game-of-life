@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BoardPanel extends JPanel {
-    private int boarder;
+    private int borderCells;
     private int cellSize;
-    private int boarderSize;
+    private int borderSize;
     private BoardRenderer boardRenderer;
     private ControlPanelMediator controlPanelMediator;
     private Point mousePosition;
@@ -16,12 +16,12 @@ public class BoardPanel extends JPanel {
     /**
      * Constructor
      */
-    BoardPanel(BoardRenderer boardRenderer, ControlPanelMediator controlPanelMediator, int boarder, int cellSize) {
+    BoardPanel(BoardRenderer boardRenderer, ControlPanelMediator controlPanelMediator, int borderCells, int cellSize) {
         this.boardRenderer = boardRenderer;
         this.controlPanelMediator = controlPanelMediator;
         this.cellSize = cellSize;
-        this.boarder = boarder;
-        this.boarderSize = boarder * cellSize;
+        this.borderCells = borderCells;
+        this.borderSize = borderCells * cellSize;
         this.mousePosition = new Point();
     }
 
@@ -34,11 +34,11 @@ public class BoardPanel extends JPanel {
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        boardRenderer.draw(g, boarderSize, cellSize);
+        boardRenderer.draw(g, borderSize, cellSize);
 
         if (controlPanelMediator.isDraw()) {
             g.setColor(Color.ORANGE);
-            g.fillRect(mousePosition.x * cellSize + boarderSize, mousePosition.y * cellSize + boarderSize, cellSize, cellSize);
+            g.fillRect(mousePosition.x * cellSize + borderSize, mousePosition.y * cellSize + borderSize, cellSize, cellSize);
         }
     }
 
@@ -52,8 +52,8 @@ public class BoardPanel extends JPanel {
     /**
      * @return int
      */
-    int getBoarder() {
-        return boarder;
+    int getBorderCells() {
+        return borderCells;
     }
 
     /**

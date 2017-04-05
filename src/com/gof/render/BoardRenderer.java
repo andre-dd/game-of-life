@@ -16,22 +16,22 @@ public class BoardRenderer {
      * @param g Graphics
      * @param cellSize int
      */
-    public void draw(Graphics g, int boarderSize, int cellSize) {
+    public void draw(Graphics g, int borderSize, int cellSize) {
         Cell[][] cells = board.getCells();
 
-        int x = boarderSize, y = boarderSize;
+        int x = borderSize, y = borderSize;
         g.setColor(new Color(48, 48, 48));
         g.fillRect(x, y, cellSize * board.getColumns(), cellSize * board.getRows());
 
         for (int i = 0; i < board.getRows(); i++) {
             for (int j = 0; j < board.getColumns(); j++) {
-                g.setColor(Color.DARK_GRAY);
                 if (!cells[i][j].isAlive()) {
+                    g.setColor(Color.DARK_GRAY);
                     g.drawRect(x, y, cellSize, cellSize);
                 }
 
-                g.setColor(Color.RED);
                 if (cells[i][j].isAlive()) {
+                    g.setColor(Color.WHITE);
                     g.fillRect(x, y, cellSize, cellSize);
                     g.setColor(Color.DARK_GRAY);
                     g.drawRect(x, y, cellSize, cellSize);
@@ -39,7 +39,7 @@ public class BoardRenderer {
 
                 x += cellSize;
             }
-            x = boarderSize;
+            x = borderSize;
             y += cellSize;
         }
     }
